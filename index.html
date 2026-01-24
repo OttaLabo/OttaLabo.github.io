@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>OttaLabo | App</title>
+  <meta name="description" content="OttaLabo のアプリ紹介・サポートページ" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OttaLabo | App" />
+  <meta property="og:description" content="OttaLabo のアプリ紹介・サポートページ" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #fff7fb;
+      --bg2:#f3fbff;
+      --card: rgba(255,255,255,.72);
+      --text:#1b1b1f;
+      --muted: rgba(27,27,31,.66);
+      --line: rgba(27,27,31,.12);
+      --shadow: 0 18px 60px rgba(16,24,40,.12);
+      --radius: 22px;
+
+      --pink:#ff6fb1;
+      --lav:#a78bfa;
+      --sky:#5bd6ff;
+      --mint:#6ee7c8;
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0c14;
+        --bg2:#0a1118;
+        --card: rgba(255,255,255,.06);
+        --text: rgba(255,255,255,.92);
+        --muted: rgba(255,255,255,.66);
+        --line: rgba(255,255,255,.14);
+        --shadow: 0 18px 60px rgba(0,0,0,.38);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 5%, rgba(255,111,177,.18), transparent 60%),
+        radial-gradient(800px 500px at 85% 10%, rgba(91,214,255,.18), transparent 60%),
+        radial-gradient(700px 460px at 50% 95%, rgba(167,139,250,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 34px 16px 70px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark{
+      width: 44px; height: 44px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.78), transparent 42%),
+        linear-gradient(135deg, rgba(255,111,177,.95), rgba(91,214,255,.90));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .mark::after{
+      content:"";
+      position:absolute; inset:-60%;
+      background: radial-gradient(circle at 55% 45%, rgba(255,255,255,.55), transparent 50%);
+      transform: rotate(22deg);
+      opacity: .9;
+    }
+
+    .brandtext{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brandtext strong{
+      font-size: 14px;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brandtext span{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (prefers-color-scheme: dark){
+      .chip{ background: rgba(255,255,255,.06); }
+    }
+
+    /* Hero card */
+    .hero{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(420px 240px at 10% 0%, rgba(255,111,177,.22), transparent 70%),
+        radial-gradient(380px 220px at 90% 15%, rgba(91,214,255,.20), transparent 70%),
+        radial-gradient(340px 220px at 55% 110%, rgba(167,139,250,.18), transparent 70%);
+      pointer-events:none;
+      opacity: .85;
+    }
+
+    .hero > *{ position:relative; }
+
+    .herohead{
+      display:flex;
+      gap: 18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap: wrap;
+    }
+
+    .appblock{
+      min-width: min(520px, 100%);
+    }
+
+    h1{
+      margin: 0 0 8px;
+      font-size: clamp(22px, 2.8vw, 34px);
+      letter-spacing: .2px;
+    }
+
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+      max-width: 70ch;
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.38);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (prefers-color-scheme: dark){
+      .badge{ background: rgba(255,255,255,.06); }
+    }
+
+    .dot{
+      width: 8px; height: 8px;
+      border-radius: 99px;
+      background: linear-gradient(135deg, var(--pink), var(--sky));
+      box-shadow: 0 0 0 4px rgba(255,111,177,.10);
+    }
+
+    /* Buttons */
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      margin-top: 14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.44);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-size: 14px;
+      user-select: none;
+      min-height: 44px;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,111,177,.30);
+      background: rgba(255,255,255,.60);
+    }
+    @media (prefers-color-scheme: dark){
+      .btn{ background: rgba(255,255,255,.08); }
+      .btn:hover{ background: rgba(255,255,255,.12); }
+    }
+
+    .btn.primary{
+      border-color: rgba(255,111,177,.38);
+      background:
+        linear-gradient(135deg, rgba(255,111,177,.18), rgba(91,214,255,.16));
+    }
+
+    .hint{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Sections */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.54);
+      padding: 18px;
+    }
+    @media (prefers-color-scheme: dark){
+      .card{ background: rgba(255,255,255,.06); }
+    }
+
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+
+    .card p, .card li{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    li{ margin: 6px 0; }
+
+    .link{
+      text-decoration: underline;
+      text-decoration-color: rgba(255,111,177,.35);
+      text-underline-offset: 3px;
+    }
+
+    /* FAQ */
+    details{
+      border-top: 1px solid var(--line);
+      padding: 12px 0;
+    }
+    details:first-of-type{ border-top: none; }
+    summary{
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .1px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary .q{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    summary .q::before{
+      content:"";
+      width:10px; height:10px;
+      border-radius: 99px;
+      background: linear-gradient(135deg, var(--lav), var(--mint));
+      box-shadow: 0 0 0 4px rgba(167,139,250,.10);
+      flex: 0 0 auto;
+    }
+    .answer{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap: 10px;
+    }
+
+    /* Cute tiny decorative bubbles (pure CSS) */
+    .bubbles{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      opacity: .55;
+      filter: blur(.2px);
+      mix-blend-mode: multiply;
+    }
+    @media (prefers-color-scheme: dark){
+      .bubbles{ opacity: .35; mix-blend-mode: screen; }
+    }
+    .b{
+      position:absolute;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), transparent 45%),
+        linear-gradient(135deg, rgba(255,111,177,.55), rgba(91,214,255,.45));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
+    }
+    .b1{ width: 90px; height: 90px; left: -20px; top: 16px; transform: rotate(8deg); }
+    .b2{ width: 64px; height: 64px; right: 26px; top: 24px; transform: rotate(-10deg); }
+    .b3{ width: 120px; height: 120px; right: -40px; bottom: -30px; transform: rotate(12deg); }
+    .b4{ width: 72px; height: 72px; left: 36%; bottom: -26px; transform: rotate(-8deg); opacity:.7; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="brandtext">
+          <strong>OttaLabo</strong>
+          <span>Apps</span>
+        </div>
+      </div>
+      <div class="chip" title="Marketing URL page">
+        <span aria-hidden="true">✦</span> Official Page
+      </div>
+    </div>
+
+    <main class="hero">
+      <div class="bubbles" aria-hidden="true">
+        <div class="b b1"></div>
+        <div class="b b2"></div>
+        <div class="b b3"></div>
+        <div class="b b4"></div>
+      </div>
+
+      <div class="herohead">
+        <div class="appblock">
+          <h1 id="appName"></h1>
+          <p class="subtitle" id="appDesc">
+          </p>
+
+          <div class="badges">
+            <span class="badge"><span class="dot"></span><span id="badge1">iPhone / iPad</span></span>
+          </div>
+
+          <div class="actions">
+
+            <a class="btn primary" id="storeBtn" href="https://apps.apple.com/jp/app/morgueroom/id6756243850" target="_blank" rel="noreferrer">
+              <span aria-hidden="true"></span> App Store で見る
+            </a>
+
+            <a class="btn" id="mailBtn" href="https://forms.gle/XygJvgzCZDFxQbGW8">
+              お問い合わせ
+            </a>
+
+            <!-- 追加リンク（任意） -->
+            <a class="btn" id="privacyBtn" href="https://docs.google.com/document/d/1RZMm9CjyJGOWK6uxEuUl0mLbkajwIkgw1xOCQ62xKXA/edit?usp=drive_link">
+              プライバシー
+            </a>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div>© <span id="year"></span> OttaLabo. All rights reserved.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const CONFIG = {
+      appName: "MorgueRoom",
+      appDesc: "OttaLabo、待望の第一作。\n冷たい空気が漂う静寂の遺体安置所。\n固く閉じたロッカー、無機質な照明、無造作に散らばった器具。\nタイルに反射する影の奥には、まだ誰も気づいていない“違和感”が潜んでいる。\n散りばめられた謎や仕掛け、残された手がかりを集めて、この遺体安置所から脱出しよう。",
+      badges: ["iPhone / iPad"],
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    $("appName").textContent = CONFIG.appName;
+    $("appDesc").textContent = CONFIG.appDesc;
+    $("badge1").textContent = CONFIG.badges[0] ?? "";
+
+    // Feature list
+    const ul = $("features");
+    ul.innerHTML = "";
+    CONFIG.features.forEach(t => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      ul.appendChild(li);
+    });
+
+    $("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
