@@ -59,15 +59,12 @@
       margin-bottom: 30px;
     }
 
-    .brand{ display:flex; align-items:center; gap: 12px; }
-    .mark{
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--pink), var(--sky));
-      box-shadow: var(--shadow);
+    .brand{ display:flex; align-items:center; }
+    .brand img{
+      height: 72px;
+      width: auto;
+      display: block;
     }
-    .brandtext strong{ font-size: 18px; display: block; }
-    .brandtext span{ font-size: 12px; color: var(--muted); }
 
     /* App Grid */
     .app-grid {
@@ -145,11 +142,7 @@
   <div class="wrap">
     <header class="topbar">
       <div class="brand">
-        <div class="mark"></div>
-        <div class="brandtext">
-          <strong>OttaLabo</strong>
-          <span>Creative Studio</span>
-        </div>
+        <img src="./ottalabo_logo.png" alt="OttaLabo" />
       </div>
       <a href="https://forms.gle/XygJvgzCZDFxQbGW8" class="btn">お問い合わせ</a>
     </header>
