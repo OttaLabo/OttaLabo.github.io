@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — 物販レジ</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #666;
+  --border: #e5e5e5;
+  --accent: #007aff;
+  --accent-bg: rgba(0, 122, 255, 0.08);
+  --link: #0062cc;
+  --table-stripe: rgba(127, 127, 127, 0.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --fg: #f0f0f0;
+    --muted: #999;
+    --border: #333;
+    --accent: #0a84ff;
+    --accent-bg: rgba(10, 132, 255, 0.15);
+    --link: #5ab0ff;
+    --table-stripe: rgba(255, 255, 255, 0.04);
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.75;
+  color: var(--fg);
+  background: var(--bg);
+  padding: 32px 16px 64px;
+  -webkit-text-size-adjust: 100%;
+}
+main {
+  max-width: 720px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 1.7rem;
+  margin: 0 0 6px;
+  letter-spacing: 0.01em;
+}
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 28px;
+  font-size: 0.95rem;
+}
+h2 {
+  font-size: 1.15rem;
+  margin: 32px 0 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+p, li { font-size: 1rem; }
+ul, ol { padding-left: 1.4em; }
+li { margin: 6px 0; }
+.callout {
+  background: var(--accent-bg);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin: 20px 0 28px;
+  border-radius: 4px;
+}
+.callout p { margin: 4px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 0.93rem;
+}
+th, td {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--table-stripe);
+  font-weight: 600;
+}
+a { color: var(--link); }
+code {
+  background: rgba(127, 127, 127, 0.14);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>プライバシーポリシー</h1>
+<p class="subtitle">物販レジ</p>
+
+<div class="callout">
+<p><strong>本アプリはお客様のデータを一切外部に送信しません。</strong>すべての情報はお使いの iPhone 端末内にのみ保存され、開発者を含む第三者がアクセスできない状態で扱われます。</p>
+</div>
+
+<h2>1. 適用範囲</h2>
+<p>本ポリシーは、iOS 向けアプリ「物販レジ」（以下「本アプリ」）におけるユーザー情報の取扱いについて定めるものです。本アプリは、個人主催のライブ・イベント現場での物販レジ業務を支援する目的で提供されています。</p>
+
+<h2>2. 本アプリが取り扱う情報</h2>
+<p>本アプリは、ユーザーが本アプリ内で入力・登録した以下の情報のみを取り扱います。これらはすべてお使いの端末内にのみ保存されます。</p>
+<table>
+  <thead>
+    <tr><th>項目</th><th>内容</th><th>保存場所</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>商品マスタ</td>
+      <td>商品名、税込価格、メモ、並び順、表示ON/OFF、商品画像</td>
+      <td>端末内（SwiftData ローカルストア / アプリのサンドボックス内ファイル）</td>
+    </tr>
+    <tr>
+      <td>取引履歴</td>
+      <td>会計日時、合計金額、預かり金額、おつり、決済手段、商品明細のスナップショット、取消フラグ、メモ</td>
+      <td>端末内（SwiftData ローカルストア）</td>
+    </tr>
+    <tr>
+      <td>キャッシュレス決済手段</td>
+      <td>表示名（例: PayPay）、並び順、表示ON/OFF</td>
+      <td>端末内（SwiftData ローカルストア）</td>
+    </tr>
+    <tr>
+      <td>アプリ設定</td>
+      <td>ハプティクス ON/OFF、商品カードのタップ動作 など</td>
+      <td>端末内（UserDefaults）</td>
+    </tr>
+  </tbody>
+</table>
+<p>氏名、メールアドレス、電話番号、位置情報、広告識別子（IDFA）、端末識別子（IDFV 等）といった個人情報や識別情報は<strong>一切取得しません</strong>。</p>
+
+<h2>3. ネットワーク通信</h2>
+<p>本アプリは外部サーバーとの通信を一切行いません。機内モードや圏外でも全機能が動作します。</p>
+<ul>
+  <li>分析ツール（Google Analytics、Firebase Analytics、その他 SDK）は組み込まれていません。</li>
+  <li>クラッシュレポートの送信機能はありません。</li>
+  <li>広告の配信および計測は行いません。</li>
+  <li>外部の決済サービス（PayPay、楽天Pay 等）との API 連携はありません。キャッシュレス会計は別端末・別アプリで決済済みであることを前提に、本アプリでは「記録」のみを行います。</li>
+</ul>
+
+<h2>4. カメラ・写真へのアクセス</h2>
+<p>商品画像の登録において、以下のアクセスを必要に応じて使用します。いずれの場合も、取得した画像は本アプリのサンドボックス内（<code>Documents/products/</code>）に JPEG として保存され、アプリ外には送信されません。</p>
+<ul>
+  <li><strong>カメラ</strong>: ユーザーが「カメラで撮影」を選択したときのみ起動します。初回利用時に iOS のシステムダイアログで許可を求め、許可されない場合はカメラ機能を使用しません。</li>
+  <li><strong>フォトライブラリ</strong>: ユーザーが「ライブラリから選択」を選択したとき、iOS 標準の Photos Picker を表示します。Photos Picker は OS が管理する独立した仕組みで、ユーザーが選んだ画像のみが本アプリに渡されます。本アプリはフォトライブラリ全体へのアクセス権限を要求せず、ユーザーが明示的に選択した画像以外を読み取ることはできません。</li>
+</ul>
+
+<h2>5. データのエクスポート</h2>
+<p>本アプリには、ユーザーが任意で行えるデータ書き出し機能があります。書き出されたファイルの送信先・保存先は、iOS 標準の共有シート（Share Sheet）でユーザー自身が選択します。本アプリは外部送信処理に関与しません。</p>
+<ul>
+  <li>売上履歴の CSV エクスポート</li>
+  <li>商品マスタの JSON エクスポート / インポート</li>
+</ul>
+
+<h2>6. 第三者への提供</h2>
+<p>本アプリは、ユーザー情報を第三者に提供することはありません。前述のとおり、データは端末内にのみ存在し、開発者を含めてアクセスできない状態で保持されます。</p>
+
+<h2>7. データの保管期間と削除</h2>
+<p>本アプリ内のデータは、ユーザーがアプリ内の操作（商品の削除・取引の取消など）を行うか、本アプリをアンインストールするまで端末内に保持されます。アンインストールすると、本アプリが管理する全データ（商品マスタ、取引履歴、画像ファイル、設定値）が端末から完全に削除されます。</p>
+
+<h2>8. お子様のプライバシー</h2>
+<p>本アプリは年齢に関する情報を取得せず、特定の年齢層を対象としていません。お子様が本アプリをご利用になる場合は、保護者の方の管理のもとでご利用ください。</p>
+
+<h2>9. セキュリティ</h2>
+<p>本アプリのデータは、iOS が提供する標準のアプリケーションサンドボックスとファイル保護機構の下で保存されます。情報を保護するため、端末本体のパスコード設定および Face ID / Touch ID を有効にしておくことを推奨します。</p>
+
+<h2>10. プライバシーポリシーの変更</h2>
+<p>本ポリシーは、法令の改正や本アプリの機能変更等にともない、予告なく改定されることがあります。重要な変更がある場合は、本アプリのアップデートリリースノートまたは本ページ上で告知します。</p>
+
+<footer>
+<p>
+制定日: 2026年5月6日<br>
+最終更新日: 2026年5月6日
+</p>
+</footer>
+
+</main>
+</body>
+</html>
