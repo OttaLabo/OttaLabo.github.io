@@ -1,0 +1,163 @@
+:root {
+  --bg: #fdf2f6;
+  --card: #ffffff;
+  --ink: #3a2e33;
+  --muted: #8a7d83;
+  --accent: #ff6fa5;
+  --accent-soft: #ffe3ee;
+  --line: #f3dde6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.85;
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 16px;
+}
+
+.langbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: rgba(253, 242, 246, 0.9);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.langbar .brand {
+  flex: 1;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+button.lang {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button.lang.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8px 18px 72px;
+}
+
+.doc {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 32px 26px 40px;
+  margin-top: 20px;
+  box-shadow: 0 6px 24px rgba(255, 111, 165, 0.08);
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 32px 0 10px;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+  line-height: 1.45;
+}
+
+h3 {
+  font-size: 15px;
+  margin: 22px 0 8px;
+  color: var(--muted);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 14px;
+}
+
+ul,
+ol {
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+a {
+  color: var(--accent);
+  word-break: break-all;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 28px 0 16px;
+}
+
+.updated {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 28px;
+}
