@@ -276,6 +276,18 @@
       object-fit: cover;
       display: block;
     }
+    /* LINE sticker thumbnails: show the whole character */
+    .icon-frame.sticker{
+      background: #fff;
+    }
+    .icon-frame.sticker img{
+      object-fit: contain;
+      padding: 6px;
+    }
+    .badge.line::before{
+      background: #06c755;
+      box-shadow: 0 0 8px #06c755;
+    }
     .app-meta{ flex: 1; min-width: 0; }
     .app-name{
       margin: 6px 0 8px;
@@ -405,6 +417,7 @@
       </a>
       <div class="nav-actions">
         <a href="#apps" class="nav-link">Apps</a>
+        <a href="#stamps" class="nav-link">Stickers</a>
         <a href="https://forms.gle/XygJvgzCZDFxQbGW8" class="nav-cta">
           Contact
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -439,6 +452,14 @@
         <span class="label">— Selected Works</span>
       </div>
       <div class="app-grid" id="appGrid"></div>
+    </section>
+
+    <section class="section" id="stamps">
+      <div class="sec-head">
+        <h2>LINE Stamps<span class="count" id="stampCountSup"></span></h2>
+        <span class="label">— Sticker Shop</span>
+      </div>
+      <div class="app-grid" id="stampGrid"></div>
     </section>
 
     <footer>
@@ -499,32 +520,48 @@
         desc: "ライブやイベントの物販ブースを、iPhone 1台でサクッとレジに。商品をタップするだけで合計と釣銭を即計算。完全オフライン動作で電波の届かない会場でも安心です。電卓レジから卒業したい個人主催者へ。",
         store: "https://apps.apple.com/jp/app/%E7%89%A9%E8%B2%A9%E3%83%AC%E3%82%B8/id6766565292",
         badge: "iOS / iPadOS"
+      },
+      {
+        name: "平成Luv♡プロフ帳",
+        icon: "./images/平成Luv♡プロフ帳/icon.png",
+        desc: "あの「プロフ帳」が、スマホで帰ってきた！平成の教室でみんなで回し合った、あの懐かしいプロフィール帳。「好きな人は？」「将来の夢は？」お気に入りのテンプレに書き込んで、自分だけの1枚を作っちゃおう。",
+        store: "https://apps.apple.com/jp/app/%E5%B9%B3%E6%88%90luv%E3%83%97%E3%83%AD%E3%83%95%E5%B8%B3/id6771185492",
+        badge: "iOS / iPadOS"
       }
     ];
 
-    const grid = document.getElementById('appGrid');
+    const STAMPS = [
+      {
+        name: "フロントエンドエンジニア オッタくん",
+        icon: "./images/フロントエンドエンジニア オッタくん/IMG_1250.PNG",
+        desc: "謎の生物オッタくんがLINEスタンプに降臨！日々の開発トークから何気ない会話まで、ゆるくて使いやすいスタンプたちです。",
+        store: "https://store.line.me/stickershop/product/33763298/ja?utm_source=gnsh_stickerDetail",
+        badge: "LINE Sticker"
+      }
+    ];
+
     const pad2 = (n) => String(n).padStart(2, '0');
 
-    APPS.forEach((app, i) => {
+    function renderCard(item, i, total, opts){
       const card = document.createElement('article');
       card.className = 'app-card reveal';
       card.innerHTML = `
         <div class="app-top">
-          <div class="icon-frame">
-            <img src="${encodeURI(app.icon)}" alt="${app.name} icon" loading="lazy" />
+          <div class="icon-frame${opts.sticker ? ' sticker' : ''}">
+            <img src="${encodeURI(item.icon)}" alt="${item.name} icon" loading="lazy" />
           </div>
           <div class="app-meta">
-            <span class="badge">${app.badge}</span>
-            <h3 class="app-name">${app.name}</h3>
+            <span class="badge${opts.sticker ? ' line' : ''}">${item.badge}</span>
+            <h3 class="app-name">${item.name}</h3>
           </div>
         </div>
-        <p class="desc">${app.desc}</p>
+        <p class="desc">${item.desc}</p>
         <div class="app-foot">
-          <a href="${app.store}" class="store-link" target="_blank" rel="noopener">
-            View on App Store
+          <a href="${item.store}" class="store-link" target="_blank" rel="noopener">
+            ${opts.linkLabel}
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
-          <span class="index-num">${pad2(i + 1)} / ${pad2(APPS.length)}</span>
+          <span class="index-num">${pad2(i + 1)} / ${pad2(total)}</span>
         </div>
       `;
 
@@ -534,13 +571,24 @@
         card.style.setProperty('--my', `${e.clientY - r.top}px`);
       });
 
-      grid.appendChild(card);
+      return card;
+    }
+
+    const appGrid = document.getElementById('appGrid');
+    APPS.forEach((app, i) => {
+      appGrid.appendChild(renderCard(app, i, APPS.length, { linkLabel: 'View on App Store' }));
+    });
+
+    const stampGrid = document.getElementById('stampGrid');
+    STAMPS.forEach((stamp, i) => {
+      stampGrid.appendChild(renderCard(stamp, i, STAMPS.length, { linkLabel: 'View on LINE STORE', sticker: true }));
     });
 
     // Counts
     const total = APPS.length;
     document.getElementById('appCount').textContent = `${pad2(total)} Apps Shipped`;
     document.getElementById('appCountSup').textContent = `(${pad2(total)})`;
+    document.getElementById('stampCountSup').textContent = `(${pad2(STAMPS.length)})`;
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Reveal on scroll
